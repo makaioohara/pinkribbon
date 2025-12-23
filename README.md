@@ -25,6 +25,7 @@ Contributions, suggestions, and discussions are welcome. If you want to start co
 ```
 git clone https://github.com/makaioohara/PinkRibbon
 cd PinkRibbon
+pip install -r requirements.txt
 ```
 At this stage, contributors are encouraged to explore the codebase,
 propose ideas, improve documentation, or suggest model approaches.
