@@ -1,25 +1,39 @@
 # Copyright (c) 2025 PinkRibbon Contributors.
-# A little portion of this code were developed and refined with the assistance of ChatGPT.
 # 
 # File Name: main.py
 # File Description: NULL
 # Notes:
 #   - NULL
 
-from preprocess import run_preprocessing
+import os
+from preprocess import preprocess_image  # function from preprocess.py
+
+TEST_DATA_DIR = "../data/test"
 
 def main():
-    print("Starting preprocessing of mammogram images...")
-    
-    raw_neg_path = "../data/raw/images/negative"
-    raw_pos_path = "../data/raw/images/positive"
-    out_neg_path = "../data/processed/images/negative"
-    out_pos_path = "../data/processed/images/positive"
 
-    # Run preprocessing
-    run_preprocessing(raw_neg_path, raw_pos_path, out_neg_path, out_pos_path)
+    # Checking if the test directory exists
+    if not os.path.exists(TEST_DATA_DIR):
+        print("Error: data/test directory not found.")
+        return
 
-    print("Preprocessing completed. Ready for training model!")
+    # Listing all files inside data/test
+    image_files = os.listdir(TEST_DATA_DIR)
 
+    for file_name in image_files:
+        image_path = os.path.join(TEST_DATA_DIR, file_name)
+
+        # Skip folders or non-image files
+        if not file_name.lower().endswith((".png", ".jpg", ".jpeg")):
+            continue
+
+        print("Processing image...")
+
+        # Send the image path to preprocess.py
+        preprocess_image(image_path)
+
+    print("All images processed successfully.")
+
+# Run the main function only if this file is executed directly
 if __name__ == "__main__":
     main()
