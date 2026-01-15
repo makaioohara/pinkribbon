@@ -1,11 +1,12 @@
 # Copyright (c) 2025 PinkRibbon Contributors
 #
 # File Name: main.py
-# Description: Entry point for processing test images
-# Notes: Processes all images in the ../data/test directory using the preprocessing pipeline
+# Description: Entry point for processing test images. Processes all images in the ../data/test directory using the preprocessing pipeline.
+# Notes: N/A
+# Flow: This file is executed first whenever a user attempts to run a test on a new mammogram image. The input is typically an image in JPG, JPEG, or PNG format. Once the file is provided, it is passed on for pre-processing. Essentially, this file initiates the user experience, allowing the user to try out the outcome of the testing workflow.
 
 import os
-from preprocess import preprocess_image  # function from preprocess.py
+from test.preprocess import preprocess_image
 
 TEST_DATA_DIR = "../data/test"
 

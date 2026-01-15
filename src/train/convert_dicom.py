@@ -3,6 +3,7 @@
 # File Name: convert_dicom.py
 # Description: Converts DICOM mammogram images to PNG format with optional resizing and normalization
 # Notes: Supports 8-bit or 16-bit PNG output and applies DICOM rescale slope/intercept automatically
+# Flow: This file is usually not triggered by other scripts and should be run manually to convert DICOM files into PNG format. Improper usage may cause crashes. Make sure to update the DICOM and PNG file paths in the code below before running.
 
 import numpy as np
 import pydicom

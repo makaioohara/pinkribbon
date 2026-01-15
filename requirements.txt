@@ -1,5 +1,8 @@
 # pip install -r requirements.txt
 
-numpy # Linear Algebra
-pandas
-tensorflow # Data-processing, CSV File I/O
+numpy        # Numerical Operations & Linear Algebra
+pandas       # Data Processing and CSV file I/O
+tensorflow   # ML model training and inference
+opencv-python   # Image resizing
+pydicom         # For reading DICOM medical images
+pypng           # For saving images as PNG format
