@@ -1,5 +1,5 @@
 # pip install -r requirements.txt
 
-numpy
-opencv-python
-Pillow
+numpy # Linear Algebra
+pandas
+tensorflow # Data-processing, CSV File I/O

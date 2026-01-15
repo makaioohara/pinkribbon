@@ -1,9 +1,8 @@
-# Copyright (c) 2025 PinkRibbon Contributors.
-# 
+# Copyright (c) 2025 PinkRibbon Contributors
+#
 # File Name: main.py
-# File Description: NULL
-# Notes:
-#   - NULL
+# Description: Entry point for processing test images
+# Notes: Processes all images in the ../data/test directory using the preprocessing pipeline
 
 import os
 from preprocess import preprocess_image  # function from preprocess.py

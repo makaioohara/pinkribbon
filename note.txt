@@ -2,5 +2,5 @@ MLO = Mediolateral Oblique - The MLO view is taken at an angle (oblique), typica
 CC = Craniocaudal - In this view, the X-ray beam goes from the top (cranio) of the breast to the bottom (caudal), while the breast is compressed between two plates. This projection is best for viewing the medial (inner) and lateral (outer) parts of the breast tissue.
 ROI = Region of Interest (ROI) refers to a specific area or volume within a medical imaging examination that is selectively chosen for detailed analysis.
 
-https://nbia.cancerimagingarchive.net/nbia-search/?CollectionCriteria=CBIS-DDSM
+https://www.cancerimagingarchive.net/collection/cbis-ddsm/
 https://www.nature.com/articles/sdata2017177
