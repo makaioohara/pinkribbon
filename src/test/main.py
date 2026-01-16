@@ -32,8 +32,6 @@ def main():
         # Send the image path to preprocess.py
         preprocess_image(image_path)
 
-    print("All images processed successfully.")
-
 # Run the main function only if this file is executed directly
 if __name__ == "__main__":
     main()

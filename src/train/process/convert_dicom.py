@@ -1,9 +1,9 @@
 # Copyright (c) 2026 Pritilata AI Contributors
 #
 # File Name: convert_dicom.py
-# Description: Converts DICOM mammogram images to PNG format with optional resizing and normalization
-# Notes: Supports 8-bit or 16-bit PNG output and applies DICOM rescale slope/intercept automatically
-# Flow: This file is usually not triggered by other scripts and should be run manually to convert DICOM files into PNG format. Improper usage may cause crashes. Make sure to update the DICOM and PNG file paths in the code below before running.
+# Description: Converts DICOM mammogram images to PNG format with optional resizing and normalization. Supports 8-bit or 16-bit PNG output and applies DICOM rescale slope/intercept automatically.
+# Notes: Input and output paths are resolved relative to the project root.
+# Flow: This script is intended to be run manually after dataset download and before metadata generation.
 
 import numpy as np
 import pydicom
@@ -12,15 +12,21 @@ import png
 from pathlib import Path
 
 
-def save_dicom_image_as_png(
-    dicom_path: str,
-    png_path: str,
-    target_size=(896, 1152),
-    output_bitdepth=16
-):
+BASE_DIR = Path(__file__).resolve().parents[3]
 
-    dicom_path = Path(dicom_path)
-    png_path = Path(png_path)
+DICOM_ROOT = BASE_DIR / "data/train/ddsm/images/dicom"
+PNG_ROOT = BASE_DIR / "data/train/ddsm/images/png"
+
+
+def save_dicom_image_as_png(
+    dicom_path: Path,
+    png_path: Path,
+    target_size=(896, 1152),
+    output_bitdepth=16,
+):
+    dicom_path = Path(dicom_path).resolve()
+    png_path = Path(png_path).resolve()
+    png_path.parent.mkdir(parents=True, exist_ok=True)
 
     try:
         ds = pydicom.dcmread(dicom_path)
@@ -34,10 +40,10 @@ def save_dicom_image_as_png(
             image = cv2.resize(
                 image,
                 dsize=target_size,
-                interpolation=cv2.INTER_CUBIC
+                interpolation=cv2.INTER_CUBIC,
             )
 
-        max_val = (2 ** output_bitdepth) - 1
+        max_val = (2**output_bitdepth) - 1
         image -= image.min()
         image /= image.max()
         image *= max_val
@@ -48,11 +54,9 @@ def save_dicom_image_as_png(
                 width=image.shape[1],
                 height=image.shape[0],
                 bitdepth=output_bitdepth,
-                greyscale=True
+                greyscale=True,
             )
             writer.write(f, image.tolist())
-
-        print(f"✔ Saved: {png_path}")
 
     except Exception as e:
         raise RuntimeError(f"Failed to process {dicom_path}") from e
